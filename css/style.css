@@ -1,4 +1,17 @@
+
+body {
+	height: 100%;
+	margin: 0;
+}
+
+.container-fluid {
+	padding: 0;
+	margin: 0;
+}
+
+
 #map {
-	height: 400px;
-	width: 500px;
+	height: 500px;
+	width: 100%;
+	margin: 0 auto; 
 }
