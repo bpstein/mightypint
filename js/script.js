@@ -1,3 +1,5 @@
+// GLOBAL SCOPE
+
 // Define the map styles
 var map_styles = [ 
   {
@@ -113,7 +115,6 @@ var pop_up_info = "border: 0px solid black; background-color: #ffffff; padding:1
 // When the page loads, the line below calls the function below called 'loadGOTMap' to load up the map
 google.maps.event.addDomListener(window, 'load', loadGOTMap);
 
-
 // Call this function when the page loads
 function loadGOTMap() {
   
@@ -141,7 +142,6 @@ function loadGOTMap() {
 
   });
 
-
   // Load the map markers
   loadMarkers();
 }
@@ -150,7 +150,7 @@ function loadMarkers() {
 
   // THE RED LION, WESTMINSTER
 
-    // MARKER FUNCITONALITY
+    // MARKER FUNCTIONALITY
     // Set the position of the map marker
     var markerPositionRedLionWestminster = new google.maps.LatLng(51.502290, -0.125668);
 
@@ -178,24 +178,30 @@ function loadMarkers() {
       title: 'The Red Lion',
       icon: markerIconRedLionWestminster,
       shape: markerShapeRedLionWestminster,
-      zIndex: 107
-    });
+      zIndex: 101
+    })
 
-    // POPUP BOX FUNCITONALITY
+    // Reset z-indexes back to original values
+    function resetZindexes() {
+      markerRedLionWestmister(101);
+    }
+
+    // POPUP BOX FUNCTIONALITY
     // Create the popup box
     var infoBoxTextRedLionWestminster = document.createElement('div');
     infoBoxTextRedLionWestminster.style.cssText = pop_up_info;
-    infoBoxTextRedLionWestminster.innerHTML = '<span class="pop_up_box_text"> width="400" height="285" border="0" /></span>';
+    infoBoxTextRedLionWestminster.innerHTML = '<span class="pop_up_box_text" width="400" height="285" border="0">Here is some sample text.</span>';
 
     // Popup configuration options of the popup box
     var infoBoxOptionsRedLionWestminster = {
-      content: infoBoxRedLionWestminster,
+      content: infoBoxTextRedLionWestminster,
       disableAutoPan: false,
-      maxWidth: 0,
+      maxWidth: 100,
+      maxHeight: 400,
       pixelOffset: new google.maps.Size(-241, 0),
       zIndex: null,
       boxStyle: { 
-        background: "url('infobox/pop_up_box_top_arrow.png') no-repeat",
+        // background: "url('img/lannister.png') no-repeat",
         opacity: 1,
         width: "430px"
       }, 
@@ -218,5 +224,12 @@ function loadMarkers() {
       GOTMap.setCenter(markerRedLionWestmister.getPosition());
     });
 
+    // Zoom in the map when a marker is clicked
+    function setZoomWhenMarkerClicked() {
+      var currentZoom = GOTMap.getZoom();
+      if (currentZoom < 5) {
+        GOTMap.setZoom(5);
+    }
+  }
 }
 
