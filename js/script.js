@@ -5,7 +5,7 @@ var map_styles = [
   {
     "featureType": "administrative",
     "stylers": [
-      { "visibility": "off" }
+      { "visibility": "on" }
     ]
   },{
     "featureType": "poi",
@@ -15,23 +15,23 @@ var map_styles = [
   },{
     "featureType": "transit",
     "stylers": [
-      { "visibility": "off" }
+      { "visibility": "on" }
     ]
   },{
     "featureType": "road",
     "stylers": [
-      { "visibility": "off" }
+      { "color": "#333" }
     ]
   },{
     "featureType": "landscape",
     "stylers": [
-      { "color": "#FFE200" }
+      { "color": "#e3f2f5" }
     ]
   },{
     "featureType": "water",
     "stylers": [
       { "visibility": "on" },
-      { "color": "#4f92c6" }
+      { "color": "#f3feff" }
     ]
   }
 ];
@@ -46,34 +46,34 @@ var map_styles_zoomed = [
   },{
     "featureType": "poi",
     "stylers": [
-      { "visibility": "on" }
+      { "visibility": "off" }
     ]
   },{
     "featureType": "transit",
     "stylers": [
-      { "visibility": "on" }
+      { "visibility": "on" } 
     ]
   },{
     "featureType": "road",
     "stylers": [
-      { "visibility": "on" }
+      { "visibility": "on"}
     ]
   },{
     "featureType": "landscape",
     "stylers": [
-      { "color": "#FFE200" }
+      { "color": "#e3f2f5" }
     ]
   },{
     "featureType": "water",
     "stylers": [
       { "visibility": "on" },
-      { "color": "#4f92c6" }
+      { "color": "#f3feff" }
     ]
   },   {
     "featureType": "poi.park",
   "elementType": "geometry",
     "stylers": [
-      { "color": "#FFFF00" }
+      { "color": "#e3f2f5" }
     ]
   }
 ];
@@ -190,7 +190,7 @@ function loadMarkers() {
     // Create the popup box
     var infoBoxTextRedLionWestminster = document.createElement('div');
     infoBoxTextRedLionWestminster.style.cssText = pop_up_info;
-    infoBoxTextRedLionWestminster.innerHTML = '<span class="pop_up_box_text" width="400" height="285" border="0">Here is some sample text.</span>';
+    infoBoxTextRedLionWestminster.innerHTML = '<span class="pop_up_box_text">Here is some sample text.</span>';
 
     // Popup configuration options of the popup box
     var infoBoxOptionsRedLionWestminster = {
