@@ -19,6 +19,13 @@ body {
 	background: transparent;
 }
 
+.redlion {
+	background-image: url("..img/lannister.png");
+	height: 50px;
+	width: 50px;
+	z-index: 500;
+}
+
 .logo {
 	height: 5%;
 	margin: 0;
@@ -44,20 +51,22 @@ body {
 }
 
 .pop_up_box_text {
-	font-family: Georgia, 'Times New Roman', Times, serif; 
+	font-family: 'Arial', 'Times New Roman', Times, serif; 
 	font-size: 16px; 
 	line-height: 22px; 
-  color: #484848; 
-  height: 80px; width: 80px;
+  color: red; 
+	background: #383838;
+  height: 180px; width: 80px;
 	display: inline; 
 }
 
 #footer-nav {
 	height: 65px;
-	width: 85%;
-	margin-left: 80px;
+	width: 65%;
 	bottom: 24px;
-	text-align: center;
+	margin: 0 auto;
+	left: 0;
+	right: 0;
 	z-index: 400;
 	border-style: 2px #CCC;
 	display: block;
@@ -77,6 +86,13 @@ body {
 	display: block;
 	position: absolute;
 	cursor: pointer; 
+}
+
+#share {
+	 position: absolute;
+	 z-index: 401;
+	 top: 120px;
+	 right: 40px;
 }
 
 #kingspeech {
