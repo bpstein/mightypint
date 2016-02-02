@@ -1,3 +1,4 @@
+@import url(https://fonts.googleapis.com/css?family=Marcellus);
 
 * {
 	margin: 0;
@@ -26,13 +27,26 @@ body {
 	z-index: 500;
 }
 
-.logo {
+.logo, h1, .header {
 	height: 5%;
 	margin: 0;
 	background: transparent;
 	position: absolute;
 	z-index: 400;
 	margin: 10px;
+	font-family: 'Marcellus', 'Georgia', serif;
+	color: rgba(177, 15, 46, 0.5);
+}
+
+.intro {
+	height: 15%;
+	background: transparent;
+	position: absolute;
+	z-index: 400;
+	margin: 10px;
+	top: 155px;
+	font-family: 'Marcellus', 'Georgia', serif;
+	color: rgba(177, 15, 46, 0.5);
 }
 
 .container-fluid {
@@ -70,9 +84,30 @@ body {
 	z-index: 400;
 	border-style: 2px #CCC;
 	display: block;
+	border-radius: 2px;
 	position: absolute;
 	background: #383838;
 	box-shadow: 15px 10px 25px #888888;
+	text-align: center;
+	font-family: 'Marcellus', 'Georgia', serif;
+
+}
+
+#footer-nav li {
+	list-style-type: none;	
+	float: left;
+	padding-left: 20px;
+	padding-right: 20px;
+	margin-left: 8px; margin-right: 8px; margin-top: 30px;
+	position: relative;
+	text-align: center;
+	font-family: 'Marcellus', 'Georgia', serif;
+}
+
+#footer-nav li:hover, 
+#footer-nav:hover, 
+li a:hover {
+	text-decoration: none;
 }
 
 #kingrobert {
@@ -86,6 +121,7 @@ body {
 	display: block;
 	position: absolute;
 	cursor: pointer; 
+	box-shadow: 15px 10px 25px #888888;
 }
 
 #share {
@@ -98,6 +134,8 @@ body {
 #kingspeech {
 	height: 95px;
 	width: 200px;
+	padding: 10px;
+	text-align: center;
 	background-color: #fff;
 	border-radius: 5px;
 	top: 20px;
@@ -107,5 +145,13 @@ body {
 	position: absolute;
 	box-shadow: 15px 10px 25px #888888;
 }
+
+
+
+
+
+
+
+
 
 
