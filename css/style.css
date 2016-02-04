@@ -184,6 +184,8 @@ li a:hover {
 		height: 100%;
 		top: 0px;
 		position: relative;
+		border-radius: 50px;
+		background: no-repeat cover;
 		background-image: url("../img/baratheon.png");
 		}
 
