@@ -1,9 +1,6 @@
 // $(document).ready(function(){
 
-//   // SOCIAL MEDIA KING ROBERT FUNCTIONALITY
-//   $("#kingrobert").click(function(){
-//     $('#kingspeech').toggle(350);
-//   });
+
 
 //   // **********CREATE THE MAP**********//
 
@@ -464,213 +461,180 @@
 // });
 
 
+$(document).ready(function() {
 
+  // SOCIAL MEDIA KING ROBERT FUNCTIONALITY
+  $("#kingrobert").click(function(){
+    $('#kingspeech').toggle(350);
+  });
 
+  var GOTMap;
+  var name;
 
-var GOTMap;
-var name;
-
-// Define the map styles
-var map_styles = [ 
-  {
-    "featureType": "administrative",
-    "stylers": [
-      { "visibility": "on" }
-    ]
-  },{
-    "featureType": "poi",
-    "stylers": [
-      { "visibility": "off" }
-    ]
-  },{
-    "featureType": "transit",
-    "stylers": [
-      { "visibility": "on" }
-    ]
-  },{
-    "featureType": "road",
-    "stylers": [
-      { "color": "#333" }
-    ]
-  },{
-    "featureType": "landscape",
-    "stylers": [
-      { "color": "#e3f2f5" }
-    ]
-  },{
-    "featureType": "water",
-    "stylers": [
-      { "visibility": "on" },
-      { "color": "#f3feff" }
-    ]
-  }
-];
-
-
-
-// When the page loads, the line below calls the function below called 'loadGOTMap' to load up the map
-google.maps.event.addDomListener(window, 'load', loadGOTMap);
-
-// Use data to create custom styles 
-var custom_map = new google.maps.StyledMapType(map_styles, {name: "Map style"});
-
-function loadGOTMap() {
-  
-  var myLatlng = new google.maps.LatLng(51.508433,-0.127974);
-  
-  var mapOptions = {
-    center: myLatlng,
-    zoom: 13,
-    panControl: false,
-    mapTypeControl: false,
-    streetViewControl: false,
-    mapTypeControlOptions: {
-      mapTypeIds: [ 
-        'map_styles'
+  // Define the map styles
+  var map_styles = [ 
+    {
+      "featureType": "administrative",
+      "stylers": [
+        { "visibility": "on" }
       ]
-    }   
-  };
-
-  // Create the map as a div  
-  GOTMap = new google.maps.Map(document.getElementById('map'), mapOptions);
-
-  //Assigning the two map styles defined above to the map.
-  GOTMap.mapTypes.set('map_styles', custom_map);
-  //Setting the one of the styles to display as default as the map loads.
-  GOTMap.setMapTypeId('map_styles');
-
-  var markers = [ 
-    { Lat:"51.508433", Lng:"-0.127974", name:"WESTMINSTER" }
+    },{
+      "featureType": "poi",
+      "stylers": [
+        { "visibility": "off" }
+      ]
+    },{
+      "featureType": "transit",
+      "stylers": [
+        { "visibility": "on" }
+      ]
+    },{
+      "featureType": "road",
+      "stylers": [
+        { "color": "#333" }
+      ]
+    },{
+      "featureType": "landscape",
+      "stylers": [
+        { "color": "#e3f2f5" }
+      ]
+    },{
+      "featureType": "water",
+      "stylers": [
+        { "visibility": "on" },
+        { "color": "#f3feff" }
+      ]
+    }
   ];
 
-  function customMarker(latlng, map, args) {
-      this.latlng = latlng;
-      this.args = args;
-      this.setMap(map);
-  }
-  
-  customMarker.prototype = new google.maps.OverlayView();
-  
-  customMarker.prototype.draw = function() {
-    var self = this;
-    var div = this.div;
-  
-    if (!div) {
-    
-      div = this.div = document.createElement('div');
-      div.id = 'marker';
-      div.style.width = '100px';
-      div.style.height = '100px';
-    
-      var div_pointer = document.createElement('div');
-      div_pointer.className = 'triangle';
-      
-      var image_container = document.createElement('div');
-      image_container.className = 'image_container';
-      
-      var img = document.createElement('img');
-      img.className = "marker_image";
-      img.src = self.args.img;
-      
-      var name_container = document.createElement('div');
-      name_container.className = 'name_container';
-      
-      var text = document.createElement('p');
-      text.innerText = self.args.name;
-      text.className = 'text';
-    
-      var exit = document.createElement('div');
-      exit.className = 'exit';
-      exit.innerHTML = '<img className="exit_image" style="width:30px; height:30px;" src="https://cdn3.iconfinder.com/data/icons/security-1/512/delete-512.png">' + '</img>';
-      exit.style.display = 'none';
+  // When the page loads, call the function 'loadGOTMap' to load up the map
+  google.maps.event.addDomListener(window, 'load', loadGOTMap);
 
-      function large() {
-        div.classList.add('large');
-        div.style.width = '300px'; 
-        div.style.height = '300px';
-        div.style.zIndex = '1000';
-        exit.style.display = 'block';
-        exit.style.opacity = '1';
-        exit.addEventListener('mouseover', function() {
-          exit.style.opacity = '1';
-        }, false);
-        exit.addEventListener('mouseout', function() {
-          exit.style.opacity = '0.3';
-        }, false);
+  // Use data to create custom styles 
+  var custom_map = new google.maps.StyledMapType(map_styles, {name: "Map style"});
+
+  // LOAD THE GOT MAP!
+  function loadGOTMap() {
+    
+    var myLatlng = new google.maps.LatLng(51.508433,-0.127974);
+    
+    var mapOptions = {
+      center: myLatlng,
+      zoom: 13,
+      panControl: false,
+      mapTypeControl: false,
+      streetViewControl: false,
+      mapTypeControlOptions: {
+        mapTypeIds: [ 
+          'map_styles'
+        ]
+      }   
+    };
+
+    // Create the map as a div  
+    GOTMap = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+    // Assign the map styles defined above to the map
+    GOTMap.mapTypes.set('map_styles', custom_map);
+
+    // Set one of the styles to display as default as the map loads
+    GOTMap.setMapTypeId('map_styles');
+
+    // Define the map markers, which will be venues 
+    var markers = [ 
+      { Lat:"51.508433", Lng:"-0.127974", name:"WESTMINSTER" },
+      { Lat:"51.514433", Lng:"-0.137974", name:"WESTMINSTER" },
+      { Lat:"51.508433", Lng:"-0.127974", name:"WESTMINSTER" }
+    ];
+
+    // Set custom markers as map overlays
+    function customMarker(latlng, map, args) {
+        this.latlng = latlng;
+        this.args = args;
+        this.setMap(map);
+    }
+    
+    customMarker.prototype = new google.maps.OverlayView();
+    
+    customMarker.prototype.draw = function() {
+      var self = this;
+      var div = this.div;
+    
+      if (!div) {
+      
+        div = this.div = document.createElement('div');
+        div.className = 'marker';
+        div.style.width = '89px';
+        div.style.height = '89px';
+        
+        var image_container = document.createElement('div');
+        image_container.className = 'image_container';
+        
+        var img = document.createElement('div');
+        img.className = "marker_image";
+        // img.src = self.args.img;
+        
+        // var name_container = document.createElement('div');
+        // name_container.className = 'name_container';
+        
+        // var text = document.createElement('p');
+        // text.innerText = self.args.name;
+        // text.className = 'text';
+      
+        // var exit = document.createElement('div');
+        // exit.className = 'exit';
+        // exit.innerHTML = '<img className="exit_image" style="width:30px; height:30px;" src="https://cdn3.iconfinder.com/data/icons/security-1/512/delete-512.png">' + '</img>';
+        // exit.style.display = 'none';
+      
+        // div.appendChild(image_container);
+        // image_container.appendChild(marker_image);
+      
+        // if(typeof(self.args.marker_id) !== 'undefined') {
+        //   div.dataset.marker_id = self.args.marker_id; 
+        // }
+      
+        // google.maps.event.addDomListener(div, "click", function(event) { 
+        //   google.maps.event.trigger(self, "click");
+        // });
+      
+        var panes = this.getPanes();
+        panes.overlayImage.appendChild(div);
+      
       }
     
+      var point = this.getProjection().fromLatLngToDivPixel(this.latlng);
     
-      function close(e) {
-        var target = e.target;
-        e.stopPropagation();
-        div.classList.remove('large');
-        div.style.width = '100px';
-        div.style.height = '100px';
-        exit.style.display = 'none';
+      if (point) {
+        div.style.left = (point.x - 43) + 'px';
+        div.style.top = (point.y - 48) + 'px';
       }
+    }
     
-      div.appendChild(image_container);
-      image_container.appendChild(img);
-      div.appendChild(div_pointer);
-      div.appendChild(name_container);
-      name_container.appendChild(text);
-      div.appendChild(exit);
-    
-      name_container.onmouseover = function() { 
-        name_container.style.opacity = '0.6'; div.style.zIndex = '1000' 
-      };
-      name_container.onmouseout = function() { 
-        name_container.style.opacity = '0'; div.style.zIndex = '100' 
-      };
-      div.addEventListener('click', large, false);
-      exit.addEventListener('click', close, false);
-    
-      if(typeof(self.args.marker_id) !== 'undefined') {
-        div.dataset.marker_id = self.args.marker_id; 
+    customMarker.prototype.remove = function() {
+      
+      if (this.div) {
+        this.div.parentNode.removeChild(this.div);
+        this.div = null;
       }
-    
-      google.maps.event.addDomListener(div, "click", function(event) { 
-        google.maps.event.trigger(self, "click");
-      });
-    
-      var panes = this.getPanes();
-      panes.overlayImage.appendChild(div);
-    
     }
-  
-    var point = this.getProjection().fromLatLngToDivPixel(this.latlng);
-  
-    if (point) {
-    div.style.left = (point.x - 50) + 'px';
-    div.style.top = (point.y - 125) + 'px';
-    }
-  }
-  
-  customMarker.prototype.remove = function() {
     
-    if (this.div) {
-      this.div.parentNode.removeChild(this.div);
-      this.div = null;
+    customMarker.prototype.getPosition = function() { 
+      return this.latlng;
     }
+    
+    markers.forEach(function(marker) {
+      var newLatlng = new google.maps.LatLng(marker.Lat, marker.Lng);
+      image = marker.img;
+      name = marker.name;
+    
+      var overlay = new customMarker(
+        newLatlng, 
+        GOTMap, {
+          img: image,
+          name: name,
+        });
+    });
   }
-  
-  customMarker.prototype.getPosition = function() { 
-    return this.latlng;
-  }
-  
-  markers.forEach(function(marker) {
-    var newLatlng = new google.maps.LatLng(marker.Lat, marker.Lng);
-    image = marker.img;
-    name = marker.name;
-  
-    var overlay = new customMarker(
-      newLatlng, 
-      GOTMap, {
-        img: image,
-        name: name,
-        marker_id: '123',
-        colour: 'Red'
-      });
-  });
-}
+});
+
 
