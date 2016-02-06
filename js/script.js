@@ -164,7 +164,10 @@
 // });
 
 
-function CustomMarker(latlng, map, args) {
+
+$(document).ready(function(){
+
+	function CustomMarker(latlng, map, args) {
 	this.latlng = latlng;	
 	this.args = args;	
 	this.setMap(map);	
@@ -221,6 +224,45 @@ CustomMarker.prototype.remove = function() {
 CustomMarker.prototype.getPosition = function() {
 	return this.latlng;	
 };
+
+
+function initialize() {
+
+	var myLatlng = new google.maps.LatLng(51.502290,-0.125668);
+	var mapOptions = {
+		zoom: 14,
+		center: myLatlng,
+		disableDefaultUI: true
+	}
+	
+	var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+	
+	
+	// Example standard marker
+	var marker = new google.maps.Marker({
+		position: myLatlng,
+		map: map,
+		title: 'Hello World!'
+	});
+	
+	
+	overlay = new CustomMarker(
+		myLatlng, 
+		map,
+		{
+			marker_id: '123'
+		}
+	);
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+
+});
+
+
+
+
 
 
 
