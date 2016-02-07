@@ -14,6 +14,7 @@
 	<script src="js/jquery-2.1.1.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+	<script type="text/javascript" src="js/jquery.leanModal.min.js"></script>
 	<script src="js/script.js"></script>	
 </head>
 
@@ -43,8 +44,20 @@
 		<li id="all"><a href="#">All</a></li>
 	</ul>
 
-  <!-- Google Maps embedded script -->
-<!-- 	<div id="map"></div> 
- -->	<div id="map-canvas"></div>
+	<!-- Map background div -->
+ 	<div id="map-canvas"></div>
+ 	<div class="marker" data-modal-id="popup1"></div>
+
+ 	<!-- The Modal -->
+	<div id="myModal" class="modal">
+
+	  <div class="modal-content">
+	    <span class="close">x</span>
+	    <p>Some text in the Modal..</p>
+	  </div>
+
+	</div>
+
+
 </body>
 </html>

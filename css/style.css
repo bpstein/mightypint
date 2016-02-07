@@ -23,7 +23,6 @@ body {
 }
 
 .marker {
-	
 	background-image: url("../img/lannister.png");
 	cursor: pointer;
 	border-color: #fff;
@@ -33,16 +32,22 @@ body {
 	border-radius: 50px;
  	background-repeat: no-repeat;
   background-position: center;
-/*  background-size: 40px 40px; 
-*/}
-
-.marker:hover {
-	animation-name: slide-up; animation-duration: 0.25s;
+/*  background-size: 40px 40px; */
 }
 
-@keyframes slide-up
-{
-  from { margin-top: 0px; } to { margin-top: -5px; }
+.marker:hover {
+	animation-name: bounce; animation-duration: 0.75s;
+}
+
+@keyframes bounce {
+	15% {
+    transform:translateY(0);
+    padding-bottom: 5px;
+	}
+
+	30% {
+	    transform:translateY(-20%);
+	}
 }
 
 /*****NAVBAR STYLES*****/
@@ -50,6 +55,7 @@ body {
 	padding: 0;
 	margin-bottom: 0;
 	background: transparent;
+	z-index: 900;
 }
 
 .logo, h1, .header {
@@ -150,13 +156,42 @@ li a:hover {
 	font-family: 'Marcellus', 'Georgia', serif;
 }
 
-	
+/*****MODAL STYLES*****/
 
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
 
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
 
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
 
-
-
-
-
-
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}

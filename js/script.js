@@ -60,6 +60,7 @@ $(document).ready(function(){
 
 	CustomMarker.prototype = new google.maps.OverlayView();
 
+
 	CustomMarker.prototype.draw = function() {
 		
 		var self = this;
@@ -75,14 +76,20 @@ $(document).ready(function(){
 			div.style.width = '60px'; // was 20px
 			div.style.height = '60px'; // was 20px
 			div.style.background = '../img/lannister.png';
+			div.dataModalId = 'popup1';
 			
 			if (typeof(self.args.marker_id) !== 'undefined') {
 				div.dataset.marker_id = self.args.marker_id;
 			}
 			
 			google.maps.event.addDomListener(div, "click", function(event) {
-				alert('You clicked on a custom marker!');			
-				google.maps.event.trigger(self, "click");
+				// alert('You clicked on a custom marker!');			
+				// google.maps.event.trigger(self, "click");
+				// this.leanModal();
+				// $(".marker").leanModal({ 
+				// 	overlay : 1, 
+				// 	closeButton: ".modal_close" });
+
 			});
 			
 			var panes = this.getPanes();
@@ -123,12 +130,12 @@ $(document).ready(function(){
 		var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions); 
 
 
-		// Example standard marker
-		var marker = new google.maps.Marker({
-			position: myLatlng,
-			map: map,
-			title: 'Hello World!'
-		});
+		// Example standard marker - use this to cross-check the position of the overlay markers 
+		// var marker = new google.maps.Marker({
+		// 	position: myLatlng,
+		// 	map: map,
+		// 	title: 'Hello World!'
+		// });
 		
 		
 		overlay = new CustomMarker(
@@ -145,14 +152,34 @@ $(document).ready(function(){
 	  // Set one of the styles to display as default as the map loads
 	  map.setMapTypeId('map_styles');
 
+	  // SET MODAL WINDOWS ON MARKER CLICK
+		function modalWindow(){
+			var modal = document.getElementById('myModal');
+			// Get the button that opens the modal
+			var btn = document.getElementById('footer-nav');
+			// Get the <span> element that closes the modal
+			var span = document.getElementsByClassName("close")[0];
+			// When the user clicks on the button, open the modal 
+			btn.onclick = function() {
+			  modal.style.display = "block";
+			}
+			// When the user clicks on <span> (x), close the modal
+			span.onclick = function() {
+			  modal.style.display = "none";
+			}
+
+			// When the user clicks anywhere outside of the modal, close it
+			window.onclick = function(event) {
+		    if (event.target == modal) {
+		        modal.style.display = "none";
+		    }
+			}
+		}
+
+		modalWindow();
+
 	}
 
 	google.maps.event.addDomListener(window, 'load', initialize);
 
-
 });
-
-
-
-
-
