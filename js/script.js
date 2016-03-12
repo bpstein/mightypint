@@ -6,51 +6,7 @@
 //   });
 
 //   // CREATION OF MAP GOOGLE MAP
-//   // Define the map styles
-//   var map_styles = [ 
-//     {
-//       "featureType": "administrative",
-//       "stylers": [
-//         { "visibility": "on" }
-//       ]
-//     },{
-//       "featureType": "poi",
-//       "stylers": [
-//         { "visibility": "off" }
-//       ]
-//     },{
-//       "featureType": "transit",
-//       "stylers": [
-//         { "visibility": "on" }
-//       ]
-//     },{
-//       "featureType": "road",
-//       "stylers": [
-//         { "color": "#333" }
-//       ]
-//     },{
-//       "featureType": "landscape",
-//       "stylers": [
-//         { "color": "#e3f2f5" }
-//       ]
-//     },{
-//       "featureType": "water",
-//       "stylers": [
-//         { "visibility": "on" },
-//         { "color": "#f3feff" }
-//       ]
-//     }
-//   ];
 
-//   // Use data to create custom styles 
-//   var custom_map = new google.maps.StyledMapType(map_styles, {name: "Map style"});
-
-//   // Array of venue markers
-//   var markers = [
-//   	{ Lat:"51.508433", Lng:"-0.127974", name:"WESTMINSTER" },
-//     { Lat:"51.504433", Lng:"-0.127944", name:"TEST1" },
-//     { Lat:"51.504333", Lng:"-0.127974", name:"TEST2" }
-//   ];
 
 //   // DECLARE THE CUSTOM MARKER CLASS
 // 	function CustomMarker(latlng, map, args) {
@@ -128,22 +84,7 @@
 
 // 	function initialize() {
 
-// 		// Declare the variables and parameters for the map
-// 		var myLatLng = new google.maps.LatLng(51.502290,-0.125668);
-// 		var mapOptions = {
-// 			zoom: 14,
-// 			center: myLatLng,
-// 			disableDefaultUI: false
-// 		}
 		
-// 		var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions); 
-
-// 		// Example standard marker - use this to cross-check the position of the overlay markers 
-// 		var marker = new google.maps.Marker({
-// 			position: myLatlng,
-// 			map: map,
-// 			title: 'Hello World!'
-// 		});
 		
 		
 // 		// Pins a custom marker to the map
@@ -196,39 +137,104 @@
 
 
 
+$(document).ready(function() {
+	// Alternative script for multiple map markers 
 
+	var map;
 
+	// Define the map styles
+  var map_styles = [ 
+    {
+      "featureType": "administrative",
+      "stylers": [
+        { "visibility": "on" }
+      ]
+    },{
+      "featureType": "poi",
+      "stylers": [
+        { "visibility": "off" }
+      ]
+    },{
+      "featureType": "transit",
+      "stylers": [
+        { "visibility": "on" }
+      ]
+    },{
+      "featureType": "road",
+      "stylers": [
+        { "color": "#333" }
+      ]
+    },{
+      "featureType": "landscape",
+      "stylers": [
+        { "color": "#e3f2f5" }
+      ]
+    },{
+      "featureType": "water",
+      "stylers": [
+        { "visibility": "on" },
+        { "color": "#f3feff" }
+      ]
+    }
+  ];
 
+  // Use data to create custom styles 
+  var custom_map = new google.maps.StyledMapType(map_styles, {name: "Map style"}); 
 
-
-
-
-
-
-// Alternative script for multiple map markers 
-
-
-// https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false
-// //code.jquery.com/jquery-1.11.0.min.js
-
-var map;
-
-// The JSON data
-var json = [{"id":48,"title":"Helgelandskysten","longitude":"12.63376","latitude":"66.02219"},{"id":46,"title":"Tysfjord","longitude":"16.50279","latitude":"68.03515"},{"id":44,"title":"Sledehunds-ekspedisjon","longitude":"7.53744","latitude":"60.08929"},{"id":43,"title":"Amundsens sydpolferd","longitude":"11.38411","latitude":"62.57481"},{"id":39,"title":"Vikingtokt","longitude":"6.96781","latitude":"60.96335"},{"id":6,"title":"Tungtvann- sabotasjen","longitude":"8.49139","latitude":"59.87111"}];
-
-
-
+	var json = [
+		{
+			"id": 1, 
+			"name": "The Red Lion",
+			"house": "Lannister",
+			"address": "48 Parliament St, London SW1A 2NH",
+			"words": "Hear me roar!",
+			"details": "This is a Lannister pub.",
+			"image": "img/houses/lannister.png",
+			"url": "http://www.redlionwestminster.co.uk/",
+			"lat": "51.502129",
+			"lng": "-0.125711"
+		}, {
+			"id": 2, 
+			"name": "The Three Stags",
+			"house": "Baratheon",
+			"address": "67/69 Kennington Road, London SE1 7PZ",
+			"words": "Ours is the Fury",
+			"details": "This is a Baratheon pub.",
+			"image": "img/houses/baratheon.png",
+			"url": "http://www.thethreestags.london/",
+			"lat": "51.496844",
+			"lng": "-0.111252"
+		}, {
+			"id": 3, 
+			"name": "The Falcon",
+			"house": "Arryn",
+			"address": "33 Bedford Rd, Clapham, London SW4 7SQ",
+			"words": "As High as Honor",
+			"details": "This is a Arryn pub.",
+			"image": "img/houses/arryn.png",
+			"url": "https://www.thefalconclapham.co.uk/",
+			"lat": "51.464292", 
+			"lng": "-0.129019"
+		}
+	];
+	
 function initialize() {
   
   // Giving the map som options
   var mapOptions = {
-    zoom: 4,
-    center: new google.maps.LatLng(66.02219,12.63376)
+    zoom: 12,
+    center: new google.maps.LatLng(51.502290, -0.125668),
+    disableDefaultUI: true
   };
   
   // Creating the map
   map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-  
+
+  // Assign the map styles defined above to the map
+	map.mapTypes.set('map_styles', custom_map);
+
+	// Set one of the styles to display as default as the map loads
+	map.setMapTypeId('map_styles');
   
   // Looping through all the entries from the JSON data
   for(var i = 0; i < json.length; i++) {
@@ -238,7 +244,7 @@ function initialize() {
 
     // Adding a new marker for the object
     var marker = new google.maps.Marker({
-      position: new google.maps.LatLng(obj.latitude,obj.longitude),
+      position: new google.maps.LatLng(obj.lat,obj.lng),
       map: map,
       title: obj.title // this works, giving the marker a title with the correct title
     });
@@ -252,31 +258,29 @@ function initialize() {
 
   } // end loop
   
-  
   // Adding a new click event listener for the object
   function addClicker(marker, content) {
     google.maps.event.addListener(marker, 'click', function() {
-      
       if (infowindow) {infowindow.close();}
       infowindow = new google.maps.InfoWindow({content: content});
       infowindow.open(map, marker);
-      
     });
-  }
-
-
-  
-
-  
-  
- 
-  
-  
-  
+  }  
 }
 
 // Initialize the map
 google.maps.event.addDomListener(window, 'load', initialize);
+
+});
+
+
+
+
+
+
+
+
+
 
 
 
