@@ -7,8 +7,7 @@ var venues = {
 			"image": [""],
       "address": "",
 			"url": "",	
-			"lat": "", 
-			"lng": ""
+			"LatLng": 51.5342223, -0.11342342, 
 		}, {
 			"name": "The Hand and Flower",
 			"house": "Allyrion",

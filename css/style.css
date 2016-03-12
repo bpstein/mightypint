@@ -8,6 +8,7 @@
 
 html { 
 	height: 100%;
+	width: 100%;
 }
 
 body {
@@ -23,7 +24,7 @@ body {
 }
 
 .marker {
-	background-image: url("../img/lannister.png");
+	background-image: url("../img/houses/lannister.png");
 	cursor: pointer;
 	border-color: #fff;
 	border-width: 3px;
@@ -68,13 +69,13 @@ body {
 	font-family: 'Marcellus', 'Georgia', serif;
 	color: rgba(177, 15, 46, 0.5);
 	margin-left: 290px;
+	display: block;
 }
 
 .intro {
 	bottom: -60px;
 	position: absolute;
 	margin-left: 290px;
-
 }
 
 .intro, #share {
