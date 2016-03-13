@@ -36,6 +36,10 @@ body {
 /*  background-size: 40px 40px; */
 }
 
+.custom-marker {
+	z-index: 5000;
+}
+
 .marker:hover {
 	animation-name: bounce; animation-duration: 0.75s;
 }
