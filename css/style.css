@@ -55,14 +55,6 @@ body {
 	}
 }
 
-/*****NAVBAR STYLES*****/
-/*.navbar {
-*//*	padding: 0;
-	margin-bottom: 0;
-	background: transparent;
-	z-index: 900;
-}*/
-
 .logo, h1, .header {
 	height: 5%;
 	background: transparent;
@@ -91,44 +83,7 @@ body {
 	font-family: 'Marcellus', 'Georgia', serif;
 	color: rgba(177, 15, 46, 0.5);
 }
-/*
-#footer-nav {
-	height: 65px;
-	width: 65%;
-	bottom: 24px;
-	margin: 0 auto;
-	left: 0;
-	right: 0;
-	z-index: 400;
-	border-style: 2px #CCC;
-	display: block;
-	border-radius: 2px;
-	position: absolute;
-	background: #383838;
-	box-shadow: 15px 10px 25px #888888;
-	text-align: center;
-	font-family: 'Marcellus', 'Georgia', serif;
-	color: rgba(177, 15, 46, 0.5);
-}
 
-#footer-nav li {
-	list-style-type: none;	
-	float: left;
-	padding-left: 20px;
-	padding-right: 20px;
-	margin-left: 8px; margin-right: 8px; margin-top: 30px;
-	position: relative;
-	text-align: center;
-	font-family: 'Marcellus', 'Georgia', serif;
-	color: rgba(177, 15, 46, 0.5);
-}
-
-#footer-nav li:hover, 
-#footer-nav:hover, 
-li a:hover {
-	text-decoration: none;
-}
-*/
 /*****SOCIAL MEDIA STYLES*****/
 #kingrobert {
 	border-radius: 50px;
